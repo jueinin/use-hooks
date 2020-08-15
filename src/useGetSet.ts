@@ -46,6 +46,6 @@ export function useGetSet<S>(initialState: InitialHookState<S>): [() => S, Dispa
                 update();
             },
         ],
-        []
+        [update]
     );
 }

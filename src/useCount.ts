@@ -32,7 +32,7 @@ export function useCount(initialValue: number,min: number = Number.MIN_SAFE_INTE
             }
             setCurrentNumber(val);
         },
-        []
+        [min,max]
     );
     const reset = useCallback(() => {
         setCurrentNumber(initialValue);

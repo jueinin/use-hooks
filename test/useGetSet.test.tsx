@@ -2,7 +2,7 @@ import { useGetSet } from "../src/useGetSet";
 import React from "react";
 import { act, render } from "@testing-library/react";
 import { fireEvent, waitFor } from "@testing-library/dom";
-import { log, sleep } from "./utils";
+import { sleep } from "./utils";
 
 describe("useGetSet", () => {
     it("get should always return newest value", async function () {
@@ -11,7 +11,6 @@ describe("useGetSet", () => {
             const onClick = () => {
                 setTimeout(() => {
                     set(get() + 1);
-                    log("dd");
                 }, 200);
             };
 

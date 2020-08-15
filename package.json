@@ -22,11 +22,9 @@
         ]
     },
     "eslintConfig": {
-        "parser": "@babel/eslint-parser",
+        "parser": "@typescript-eslint/parser",
         "plugins": [
-            "react-hooks",
-            "@babel/eslint-plugin",
-            "@typescript-eslint/eslint-plugin"
+            "react-hooks"
         ],
         "rules": {
             "react-hooks/rules-of-hooks": "error",
