@@ -4,12 +4,20 @@ import {useEffectOnce} from "../src/useEffectOnce";
 describe('useEffectOnce',()=> {
     it('should use effect only once', function () {
         const returnFn = jest.fn();
-        const fn = jest.fn().mockReturnValue(() => returnFn);
-        const {result,unmount} = renderHook(() => useEffectOnce(fn));
-        expect(fn.mock.calls.length == 1);
-        expect(returnFn.mock.calls.length === 0);
+        const fn = jest.fn().mockReturnValue(returnFn);
+        const {rerender,unmount} = renderHook(() => useEffectOnce(()=>{
+            return fn();
+        }));
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(returnFn).not.toHaveBeenCalled();
+        rerender()
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(returnFn).not.toHaveBeenCalled();
+        rerender()
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(returnFn).not.toHaveBeenCalled();
         unmount()
-        expect(returnFn.mock.calls.length === 1);
-        expect(fn.mock.calls.length == 1);
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(returnFn).toHaveBeenCalledTimes(1);
     });
 })

@@ -17,8 +17,3 @@ export function useEvent<K extends keyof HTMLElementEventMap>(
         };
     }, [eventName, handler, getTarget, options]);
 }
-export function useTest(name: string) {
-    useEffect(() => {
-        document.title = name;
-    }, []);
-}
